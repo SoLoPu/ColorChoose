@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import RoomComponent from "./RoomCoponent"
+import fire from "../../FireBase"
+import 'firebase/firestore';
 
 export default function Room(props) {
     const dataListRoom = [
@@ -11,9 +13,18 @@ export default function Room(props) {
         { name: "room6" },
         { name: "room7" },
     ]
+    const [listRoom, setListRoom] = useState([])
+    useEffect(() => {
+        const db = fire.firestore();
+        db.collection("rooms").get().then(function (doc) {
+            let DataRooms = []
+            doc.forEach(e => DataRooms.push(e.data()))
+            setListRoom(DataRooms)
+        })
+    }, [])
     return (
         <div className="Room-container">
-            {dataListRoom.map((item, index) => {
+            {listRoom.map((item, index) => {
                 return <RoomComponent room={item} />
             })}
         </div>

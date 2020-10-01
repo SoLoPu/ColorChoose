@@ -27,7 +27,7 @@ import GamePlay from "./pages/GamePlay";
 // const firebaseDb = firebase.database().ref().child('object')
 // firebaseDb.on('value', snap => {
 //   console.log(snap.val())
-// })
+// }) 
 function App() {
   return (
     <div className="App">
