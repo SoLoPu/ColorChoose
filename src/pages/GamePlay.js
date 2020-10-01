@@ -4,21 +4,42 @@ import Shape from "../component/Shape";
 import dataColor from "../data/dataColor"
 import dataShape from "../data/dataShape"
 
+function containsObject(obj, list) {
+    var i;
+    for (i = 0; i < list.length; i++) {
+        if (list[i] === obj) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 const randomColor = (n) => {
     let colorArr = [];
-    for(let i = 0; i < n; i++){
-        let color = dataColor[Math.floor(Math.random()*dataColor.length)];
-        // let shape = dataShape[Math.floor(Math.random()*dataShape.length)]
-        if(colorArr.includes(color)){
-            i--;
-        }
-        else{
-            colorArr.push({color:color, shape:'square'});
-            // colorArr.push({color:color, shape:shape})
-        }
+    // for(let i = 0; i < n; i++){
+    //     let color = dataColor[Math.floor(Math.random()*dataColor.length)];
+    //     // let shape = dataShape[Math.floor(Math.random()*dataShape.length)]
+    //     let temp = {
+    //         color:color,
+    //         shape: "square"
+    //     }
+    //     if(containsObject(temp, colorArr)){
+    //         i--;
+    //     }
+    //     else{
+    //         colorArr.push({color:color, shape:'square'});
+    //         // colorArr.push({color:color, shape:shape})
+    //     }
         
+    // }
+    // console.log(colorArr);
+    let randIdx = Math.floor(Math.random()*(dataColor.length - n))
+
+    for(let i = randIdx; i < randIdx+n; i++){
+        let shape = Math.floor(Math.random()*dataShape)
+        colorArr.push({color:dataColor[i], shape:"square"})
     }
-    console.log(colorArr);
     return colorArr;
 }
 
