@@ -1,7 +1,26 @@
 import React, { Component } from 'react';
 import "../css/gameplay.css";
 import Shape from "../component/Shape";
+import dataColor from "../data/dataColor"
+import dataShape from "../data/dataShape"
 
+const randomColor = (n) => {
+    let colorArr = [];
+    for(let i = 0; i < n; i++){
+        let color = dataColor[Math.floor(Math.random()*dataColor.length)];
+        // let shape = dataShape[Math.floor(Math.random()*dataShape.length)]
+        if(colorArr.includes(color)){
+            i--;
+        }
+        else{
+            colorArr.push({color:color, shape:'square'});
+            // colorArr.push({color:color, shape:shape})
+        }
+        
+    }
+    console.log(colorArr);
+    return colorArr;
+}
 
 
 export default class GamePlay extends Component {
@@ -9,14 +28,17 @@ export default class GamePlay extends Component {
         super(props);
         this.state = {
             round: 1,
-            time: 10,
+            time: 5,
             player1: 0,
             player2: 0,
+            active: false,
             colors: [
                 "red",
                 "blue",
                 "yellow",
                 "black"
+            ],
+            shapes: [
             ]
         }
         this.countDown = this.countDown.bind(this);
@@ -24,10 +46,10 @@ export default class GamePlay extends Component {
     render() {
         return (
             <div className="about-wrapper">
-                <h1 className="room-name">RoomName {this.state.round}</h1>
-                <h2 className="count-down">{this.state.time}s</h2>
-                <h5 className="explain">Try to find this color</h5>
-                <div className="result"></div>
+                <h1>RoomName {this.state.round}</h1>
+                <p className="count-down">{this.state.time}</p>
+                {this.state.active &&
+                <div className="result" style={{backgroundColor:this.state.colors[Math.floor(Math.random()*4)].color}}></div>}
                 <div className="score">
 
                     <div className="player">
@@ -43,7 +65,7 @@ export default class GamePlay extends Component {
                 <div className="container">
                     {
                         this.state.colors.map(item => 
-                            <Shape shape="square" color={item} />
+                            <Shape shape={!this.state.active ? item.shape : "square"} color={!this.state.active ?  item.color : "white"} style={!this.state.active? {} : {border:"1px solid black"}} key={item.color} />
                         )
                     }
                 </div>
@@ -73,6 +95,11 @@ export default class GamePlay extends Component {
             component.setState({
                 time: 0
            });
+           let arrWhite = component.state.colors;
+           
+           component.setState({
+                active:true
+           })
             clearInterval(x);
             
         }
@@ -81,6 +108,10 @@ export default class GamePlay extends Component {
 
     componentDidMount(){
         this.countDown();
+        this.setState({
+            colors: randomColor(4)
+        })
+
     }
 
     
