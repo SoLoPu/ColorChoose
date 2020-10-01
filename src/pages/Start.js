@@ -7,7 +7,7 @@ export default class Start extends Component {
         return(
             <div className="about-wrapper">
                 <h1>Funny Color</h1>
-                <form action="POST">
+                <form action="POST" className="">
                    <input type="text" placeholder="User name" />
                    <input type="submit" value="Submit"/>
                 </form>
