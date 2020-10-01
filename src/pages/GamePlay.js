@@ -5,7 +5,7 @@ import Shape from "../component/Shape";
 
 
 export default class GamePlay extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             round: 1,
@@ -21,14 +21,8 @@ export default class GamePlay extends Component {
         }
         this.countDown = this.countDown.bind(this);
     }
-
-    onClickAnswer() {
-
-    }
-
-
-    render(){
-        return(
+    render() {
+        return (
             <div className="about-wrapper">
                 <h1>RoomName {this.state.round}</h1>
                 <p className="count-down">{this.state.time}</p>
@@ -52,7 +46,7 @@ export default class GamePlay extends Component {
                         )
                     }
                 </div>
-                
+
             </div>
 
         )
