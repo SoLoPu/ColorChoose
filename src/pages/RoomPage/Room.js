@@ -15,13 +15,11 @@ export default function Room(props) {
                 setListRoom(listRoom)
             });
     }, [])
-    return (<
-        div className="Room-container" > {
-            listRoom.map((item, index) => {
-                return <RoomComponent room={item}
-                />
-            })
-        } <
-        /div>
+    return (<div className="Room-container" > {
+        listRoom.map((item, index) => {
+            return <RoomComponent room={item}
+            />
+        })
+    } </div>
     )
 }
