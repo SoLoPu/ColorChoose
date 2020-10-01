@@ -13,6 +13,7 @@ import {
 import Start from "./pages/Start";
 import Room from "./pages/RoomPage/Room";
 import GamePlay from "./pages/GamePlay";
+import Ranking from './pages/Ranking'
 
 // var firebaseConfig = {
 //   apiKey: "AIzaSyA89-IMEI0PP8YB3H5zWqMkg3ZvTRWoGiQ",
@@ -28,6 +29,26 @@ import GamePlay from "./pages/GamePlay";
 // firebaseDb.on('value', snap => {
 //   console.log(snap.val())
 // }) 
+
+let users = [
+  { id: 1, rank: 1, name: "Leanne Graham" },
+  { id: 2, rank: 2, name: "Ervin Howell" },
+  { id: 3, rank: 3, name: "Clementine Bauch" },
+  { id: 4, rank: 4, name: "Patricia Lebsack" },
+  { id: 5, rank: 5, name: "Patricia Lebsack" },
+  { id: 6, rank: 6, name: "Patricia Lebsack" },
+  { id: 7, rank: 7, name: "Patricia Lebsack" },
+  { id: 8, rank: 8, name: "Patricia Lebsack" },
+  { id: 9, rank: 9, name: "Patricia Lebsack" },
+  { id: 10, rank: 10, name: "Patricia Lebsack" },
+  { id: 11, rank: 11, name: "Patricia Lebsack" },
+
+];
+
+if(users.length > 10){
+  users = users.slice(0, 10)
+}
+
 function App() {
   return (
     <div className="App">
@@ -36,6 +57,9 @@ function App() {
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Switch>
+            <Route path="/ranking">
+              <Ranking users={users}/>
+            </Route>
             <Route path="/gameplay">
               <GamePlay />
             </Route>

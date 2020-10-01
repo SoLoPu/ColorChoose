@@ -1,9 +1,11 @@
 .result {
     background-color: black;
-    width: 100pt;
-    height: 50pt;
-   
-
+    border-radius: 10px;
+    width: 200pt;
+    height: 40pt;
+    color: white;
+    font-size: 20px;
+    margin: 10px;
 }
 
 .about-wrapper {
@@ -11,8 +13,10 @@
     flex-direction: column;
     align-items: center;
 }
-.container{
+
+.container {
     border: 1px solid black;
+    border-radius: 30px;
     height: 300px;
     width: 300px;
     display: flex;
@@ -23,20 +27,42 @@
     padding-bottom: 25px;
 }
 
-
-.answer{
+.answer {
     background-color: red;
     width: 120px;
     height: 120px;
 }
 
-
 .score {
     width: 300px;
     display: flex;
     justify-content: space-between;
-
 }
-.score p {
-    font-size: 25px;
+
+.room-name {
+    background: -webkit-linear-gradient(#ff0000, #ffae00);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.count-down {
+    background: -webkit-linear-gradient(#ff0000, #ffae00);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.player {
+    background: -webkit-linear-gradient(#ff0000, #ffae00);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.explain {
+    background: -webkit-linear-gradient(#ff0000, #ffae00);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

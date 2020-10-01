@@ -1,28 +1,26 @@
 .Room-container {
-  max-width: 500px;
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-between;
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
 }
 
 .room-component {
-  border: 1px solid black;
-  width: 40%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-  cursor: pointer;
-  transition: 0.2s all;
-  text-decoration: none;
-  color: black;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    cursor: pointer;
+    border: 1px solid green;
+    transition: .2s all;
 }
 
 .room-component:hover {
-  border-radius: 10px;
-  background-color: red;
-  color: white;
-  transition: 0.2s all;
+    border-radius: 30px;
+    background-image: linear-gradient(#ff0000, #ffae00);
+    color: white;
+    transition: .3s all;
 }

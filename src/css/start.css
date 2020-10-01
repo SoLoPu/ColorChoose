@@ -4,18 +4,22 @@
 }
 
 .game-name {
-    background: -webkit-linear-gradient(#11998e, #38ef7d);
+    background: -webkit-linear-gradient(#ff0000, #ffae00);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .submit {
-    background-image: linear-gradient(#11998e, #38ef7d);
+    font-family: 'Poppins', sans-serif;
+    background-image: linear-gradient(#ff0000, #ffae00);
     border: none;
     border-radius: 10px;
     width: 100px;
     height: 30px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
 .form__group {
@@ -61,7 +65,7 @@
     padding-bottom: 6px;
     font-weight: 700;
     border-width: 3px;
-    border-image: linear-gradient(to right, #11998e, #38ef7d);
+    border-image: linear-gradient(to right, #ff0000, #ffae00);
     border-image-slice: 1;
 }
 
@@ -71,7 +75,7 @@
     display: block;
     transition: 0.2s;
     font-size: 1rem;
-    color: #11998e;
+    color: #ff0000;
     font-weight: 700;
 }
 

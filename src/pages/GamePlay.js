@@ -6,19 +6,12 @@ import dataShape from "../data/dataShape"
 
 const randomColor = (n) => {
     let colorArr = [];
-    for(let i = 0; i < n; i++){
-        let color = dataColor[Math.floor(Math.random()*dataColor.length)];
-        // let shape = dataShape[Math.floor(Math.random()*dataShape.length)]
-        if(colorArr.includes(color)){
-            i--;
-        }
-        else{
-            colorArr.push({color:color, shape:'square'});
-            // colorArr.push({color:color, shape:shape})
-        }
-        
+    let randIdx = Math.floor(Math.random()*(dataColor.length - n))
+
+    for(let i = randIdx; i < randIdx+n; i++){
+        let shape = Math.floor(Math.random()*dataShape)
+        colorArr.push({color:dataColor[i], shape:"square"})
     }
-    console.log(colorArr);
     return colorArr;
 }
 
@@ -38,6 +31,7 @@ export default class GamePlay extends Component {
                 "yellow",
                 "black"
             ],
+            numOfShape: 4,
             shapes: [
             ]
         }
@@ -49,16 +43,16 @@ export default class GamePlay extends Component {
                 <h1>RoomName {this.state.round}</h1>
                 <p className="count-down">{this.state.time}</p>
                 {this.state.active &&
-                <div className="result" style={{backgroundColor:this.state.colors[Math.floor(Math.random()*4)].color}}></div>}
+                <div className="result" style={{backgroundColor:this.state.colors[Math.floor(Math.random()*this.state.numOfShape)].color}}></div>}
                 <div className="score">
 
                     <div className="player">
-                        <h1>Player 1</h1>
-                        <p>{this.state.player2}</p>
+                        <h3>Player 1</h3>
+                        <p>{this.state.player2} win</p>
                     </div>
                     <div className="player">
-                        <h1>Player 2</h1>
-                        <p>{this.state.player2}</p>
+                        <h3>Player 2</h3>
+                        <p>{this.state.player2} win</p>
                     </div>  
                     
                 </div>
@@ -86,9 +80,9 @@ export default class GamePlay extends Component {
         var x = setInterval(function() {
 
         
-       component.setState({
+        component.setState({
             time: component.state.time - 1
-       })
+        })
 
         // If the count down is finished, write some text
         if (component.state.time <= 0) {
@@ -100,6 +94,7 @@ export default class GamePlay extends Component {
            component.setState({
                 active:true
            })
+
             clearInterval(x);
             
         }
