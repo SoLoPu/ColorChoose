@@ -122,7 +122,7 @@ export default class GamePlay extends Component {
             
         }
         
-        let question= colorArr[Math.floor(Math.random()*4)].color;
+        let question = colorArr[Math.floor(Math.random()*4)].color;
         this.setState({
             question: question
         })
