@@ -6,11 +6,14 @@ export default function Room(props) {
     const [listRoom, setListRoom] = useState([])
     useEffect(() => {
         const db = fire.firestore();
-        db.collection("rooms").get().then(function (doc) {
-            let DataRooms = []
-            doc.forEach(e => DataRooms.push(e.data()))
-            setListRoom(DataRooms)
-        })
+        db.collection("rooms")
+            .onSnapshot(function (doc) {
+                const listRoom = []
+                doc.forEach(item => {
+                    listRoom.push(item.data())
+                })
+                setListRoom(listRoom)
+            });
     }, [])
     return (
         <div className="Room-container">
