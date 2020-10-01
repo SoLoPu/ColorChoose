@@ -29,6 +29,25 @@ import Ranking from './pages/Ranking';
 // firebaseDb.on('value', snap => {
 //   console.log(snap.val())
 // }) 
+
+let users = [
+  { id: "1", point: 1000, name: "Leanne Graham" },
+  { id: "2", point: 900, name: "Ervin Howell" },
+  { id: "3", point: 800, name: "Clementine Bauch" },
+  { id: "4", point: 720, name: "Patricia Lebsack" },
+  { id: "5", point: 700, name: "Patricia Lebsack" },
+  { id: "6", point: 520, name: "Patricia Lebsack" },
+  { id: "7", point: 450, name: "Patricia Lebsack" },
+  { id: "8", point: 200, name: "Patricia Lebsack" },
+  { id: "9", point: 110, name: "Patricia Lebsack" },
+  { id: "10", point: 90, name: "Patricia Lebsack" },
+  { id: "11", point: 50, name: "Patricia Lebsack" }
+];
+
+if(users.length > 10){
+  users = users.slice(0, 10)
+}
+
 function App() {
   return (
     <div className="App">
@@ -37,6 +56,9 @@ function App() {
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Switch>
+            <Route path="/ranking">
+              <Ranking users={users}/>
+            </Route>
             <Route path="/gameplay">
               <GamePlay />
             </Route>

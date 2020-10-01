@@ -1,4 +1,3 @@
-const dataColor = ["#fcd0a1", "#B6C2D9", "#32936F", "#F7F06D", "#EF27A6", "#FFFCF9", "#A2AD59", "#D4C1EC",
-"#F4D6CC", "#8AC926"]
+const dataColor = ["#6C698D", "#9C0D38", "#223127", "#192BC2", "#FFB30F", "#1AFFD5", "#D0A5C0", "#7E2E84", "#DDF093", "#FC9F5B", "#8A716A"]
 
 export default dataColor;
