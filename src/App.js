@@ -13,6 +13,7 @@ import {
 import Start from "./pages/Start";
 import Room from "./pages/RoomPage/Room";
 import GamePlay from "./pages/GamePlay";
+import Ranking from './pages/Ranking';
 
 // var firebaseConfig = {
 //   apiKey: "AIzaSyA89-IMEI0PP8YB3H5zWqMkg3ZvTRWoGiQ",
@@ -41,6 +42,9 @@ function App() {
             </Route>
             <Route path="/room">
               <Room />
+            </Route>
+            <Route path="/ranking">
+              <Ranking />
             </Route>
             <Route path="/">
               <Start />

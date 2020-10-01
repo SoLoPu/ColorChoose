@@ -7,18 +7,20 @@ export default function Room(props) {
     useEffect(() => {
         const db = fire.firestore();
         db.collection("rooms").get().then(function(doc) {
+            console.log(doc)
             let DataRooms = []
             doc.forEach(e => DataRooms.push(e.data()))
             setListRoom(DataRooms)
         })
+        
     }, [])
-    return ( <
-        div className = "Room-container" > {
+    return ( 
+        <div className = "Room-container" > {
             listRoom.map((item, index) => {
                 return <RoomComponent room = { item }
                 />
             })
-        } <
-        /div>
+        } 
+        </div>
     )
 }
