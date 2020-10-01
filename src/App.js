@@ -31,18 +31,17 @@ import Ranking from './pages/Ranking'
 // }) 
 
 let users = [
-  { id: 1, rank: 1, name: "Leanne Graham" },
-  { id: 2, rank: 2, name: "Ervin Howell" },
-  { id: 3, rank: 3, name: "Clementine Bauch" },
-  { id: 4, rank: 4, name: "Patricia Lebsack" },
-  { id: 5, rank: 5, name: "Patricia Lebsack" },
-  { id: 6, rank: 6, name: "Patricia Lebsack" },
-  { id: 7, rank: 7, name: "Patricia Lebsack" },
-  { id: 8, rank: 8, name: "Patricia Lebsack" },
-  { id: 9, rank: 9, name: "Patricia Lebsack" },
-  { id: 10, rank: 10, name: "Patricia Lebsack" },
-  { id: 11, rank: 11, name: "Patricia Lebsack" },
-
+  { id: "1", point: 1000, name: "Leanne Graham" },
+  { id: "2", point: 900, name: "Ervin Howell" },
+  { id: "3", point: 800, name: "Clementine Bauch" },
+  { id: "4", point: 720, name: "Patricia Lebsack" },
+  { id: "5", point: 700, name: "Patricia Lebsack" },
+  { id: "6", point: 520, name: "Patricia Lebsack" },
+  { id: "7", point: 450, name: "Patricia Lebsack" },
+  { id: "8", point: 200, name: "Patricia Lebsack" },
+  { id: "9", point: 110, name: "Patricia Lebsack" },
+  { id: "10", point: 90, name: "Patricia Lebsack" },
+  { id: "11", point: 50, name: "Patricia Lebsack" }
 ];
 
 if(users.length > 10){

@@ -1,4 +1,30 @@
-
+.ranking{
+    border: 1px solid black;
+    border-radius: 30px;
+    /* height: 300px; */
+    /* width: 300px; */
+    /* display: flex; */
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 50px;
+    padding-bottom: 25px;
+}
+.ranking h2{
+    margin-bottom: 20px;
+}
 .user{
     text-align: left;
+}
+
+#top1, #top2, #top3{
+    color: red;
+}
+
+#top1{
+    font-size: 30px;
+}
+
+#top2{
+    font-size: 28px;
 }
