@@ -22,14 +22,14 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
-            <Start />
+          <Route path="/gameplay">
+            <GamePlay />
           </Route>
-          <Route path="/users">
-            <Room />
+          <Route path="/room">
+            <Room/>
           </Route>
           <Route path="/">
-            <GamePlay />
+            <Start/>
           </Route>
         </Switch>
       </div>
