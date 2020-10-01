@@ -12,13 +12,11 @@ export default function Room(props) {
             setListRoom(DataRooms)
         })
     }, [])
-    return ( <
-        div className = "Room-container" > {
+    return ( <div className = "Room-container" > {
             listRoom.map((item, index) => {
                 return <RoomComponent room = { item }
                 />
             })
-        } <
-        /div>
+        } </div>
     )
 }
