@@ -15,18 +15,20 @@ export default class GamePlay extends Component {
         super(props);
         this.state = {
             host: false,
-            round: 1,
+            round: 5,
             time: 5,
             player1: 0,
             player2: 0,
             active: false,
+            state: "start",
             colors: [
                 "red",
                 "blue",
                 "yellow",
                 "black"
             ],
-            question: ""
+            question: "",
+            roomName: ""
         }
         this.countDown = this.countDown.bind(this);
         this.onClickStart = this.onClickStart.bind(this);
@@ -38,7 +40,7 @@ export default class GamePlay extends Component {
     render() {
         return (
             <div className="about-wrapper">
-                <h1>RoomName {this.state.round}</h1>
+                <h1>{this.state.roomName}</h1>
                 <p className="count-down">{this.state.time}</p>
                 {this.state.active &&
                 <div className="result" style={{backgroundColor:this.state.question}}></div>}
@@ -77,14 +79,14 @@ export default class GamePlay extends Component {
         
     }
 
+    NRound = 5;
+
     onClickStart(){
-    
-        
         this.setState({
             active: false,
             host:true,
             time: 5,
-            colors: []
+            colors: [],
         }, function(){
             this.countDown();
             this.setState({
@@ -97,6 +99,7 @@ export default class GamePlay extends Component {
     
 
     randomColor = (n) => {
+        
         
         let colorArr = [];
         for(let i = 0; i < n; i++){
@@ -132,6 +135,7 @@ export default class GamePlay extends Component {
             active: false
         }, { merge: true })
         .then(function() {
+            
             console.log("Document successfully written!");
         })
         .catch(function(error) {
@@ -141,51 +145,66 @@ export default class GamePlay extends Component {
         return colorArr;
     }
 
-    countDown(){
-        let countDownTime = 10;
-        let component = this;
+    countDown = () => {
+        const db = fire.firestore();
+        if(this.state.round >= 0){
+            // this.setSate({
+            //     round: this.state.round -1
+            // })
+            let countDownTime = 10;
+            let component = this;
 
-        var x = setInterval(function() {
-            countDownTime-=1;
+            var x = setInterval(function() {
+                countDownTime-=1;
+                
+
+
+            
+            if(component.state.time !== 0){
+                db.collection("rooms").doc("3dGkXKxwc7WYy5rA1b1s").set({
+                    time: component.state.time-1
+        
+                }, { merge: true })
+                .then(function() {
+                    console.log("Document successfully written!");
+                })
+                .catch(function(error) {
+                    console.error("Error writing document: ", error);
+                });
+        
+
+            }
             
 
+            // If the count down is finished, write some text
+            if (component.state.time <= 0) {
 
-        const db = fire.firestore();
-        if(component.state.time !== 0){
-            db.collection("rooms").doc("3dGkXKxwc7WYy5rA1b1s").set({
-                time: component.state.time-1
-    
-            }, { merge: true })
-            .then(function() {
-                console.log("Document successfully written!");
-            })
-            .catch(function(error) {
-                console.error("Error writing document: ", error);
-            });
-    
-
+                db.collection("rooms").doc("3dGkXKxwc7WYy5rA1b1s").set({
+                    active: true,
+                    time: 0   
+                }, { merge: true })
+            }
+            
+            if(countDownTime <= 0){
+                db.collection("rooms").doc("3dGkXKxwc7WYy5rA1b1s").set({
+                    round: component.state.round - 1
+                }, { merge: true })
+                component.onClickStart();
+                
+                clearInterval(x);
+            }
+            }, 1000);
+        }
+        else{
+            
         }
         
-
-        // If the count down is finished, write some text
-        if (component.state.time <= 0) {
-
-            db.collection("rooms").doc("3dGkXKxwc7WYy5rA1b1s").set({
-                active: true,
-                time: 0   
-            }, { merge: true })
-        }
-        
-        if(countDownTime <= 0){
-            component.onClickStart();
-            clearInterval(x);
-        }
-        }, 1000);
     }
 
     componentDidMount(){
         const component = this;
         const db = firestore();
+
         db.collection("rooms").doc("3dGkXKxwc7WYy5rA1b1s")
         .onSnapshot(function(doc) {
             component.setState({
@@ -195,9 +214,21 @@ export default class GamePlay extends Component {
                 question: doc.data().question,
                 player1: doc.data().users[0].point,
                 player2: doc.data().users[1].point,
+                roomName: doc.data().name,
+                round: doc.data().round,
                 
             })
-            console.log("Current data: ", doc.data());
+            if(doc.data().round===0){
+                if(doc.data().users[0].point>doc.data().users[1].point){
+                    alert("Player1 win")
+                }
+                if(doc.data().users[0].point<doc.data().users[1].point){
+                    alert("Player2 win")
+                }
+                if(doc.data().users[0].point===doc.data().users[1].point){
+                    alert("Tie")
+                }
+            }
         });
         
         
