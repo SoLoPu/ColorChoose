@@ -4,7 +4,7 @@ import User from "./User"
 
 function Ranking(props){
     return (
-        <div className="ranking">
+        <div className="container">
             <h2>Ranking</h2>
             <div>
                 {props.users.map(u => <User rank={u.rank} id={u.id} name={u.name}/>)}

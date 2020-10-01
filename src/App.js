@@ -30,12 +30,24 @@ import Ranking from './pages/Ranking'
 //   console.log(snap.val())
 // }) 
 
-const users = [
+let users = [
   { id: 1, rank: 1, name: "Leanne Graham" },
   { id: 2, rank: 2, name: "Ervin Howell" },
   { id: 3, rank: 3, name: "Clementine Bauch" },
   { id: 4, rank: 4, name: "Patricia Lebsack" },
+  { id: 5, rank: 5, name: "Patricia Lebsack" },
+  { id: 6, rank: 6, name: "Patricia Lebsack" },
+  { id: 7, rank: 7, name: "Patricia Lebsack" },
+  { id: 8, rank: 8, name: "Patricia Lebsack" },
+  { id: 9, rank: 9, name: "Patricia Lebsack" },
+  { id: 10, rank: 10, name: "Patricia Lebsack" },
+  { id: 11, rank: 11, name: "Patricia Lebsack" },
+
 ];
+
+if(users.length > 10){
+  users = users.slice(0, 10)
+}
 
 function App() {
   return (
