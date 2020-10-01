@@ -128,20 +128,24 @@ export default class GamePlay extends Component {
         return (
             <div className="about-wrapper">
                 <h1>{this.state.roomName}</h1>
-                <p className="count-down">{this.state.time}</p>
+                <p className="count-down">Round {this.state.round}</p>
+                { this.state.time>0 &&  <p className="count-down" style={{height: "40px"}}>{this.state.time}s to remember</p>}
+                { this.state.time===0 &&  <p className="count-down" style={{height: "40px"}}>Choose your answer in 5s</p>}
+
                 {this.state.active &&
-                    <div className="result" style={{ backgroundColor: this.state.question }}></div>}
+                    <div className="result" style={{ backgroundColor: this.state.question, border: "1px solid", borderColor: this.state.question}}></div>}
+                {!this.state.active &&
+                    <div className="result" style={{ border: "1px solid black", backgroundColor:"white" }}></div>}
                 <div className="score">
 
                     <div className="player">
                         <h3>Player 1</h3>
-                        <p>{this.state.player1} win</p>
+                        <p>{this.state.player1} point</p>
                     </div>
                     <div className="player">
                         <h3>Player 2</h3>
-                        <p>{this.state.player2} win</p>
+                        <p>{this.state.player2} point</p>
                     </div>
-
                 </div>
                 <UserInfo countDown={() => countDown()} />
                 <div className="container">
@@ -167,7 +171,6 @@ export default class GamePlay extends Component {
 
     }
 
-    NRound = 5;
 
     onClickStart() {
         this.setState({
@@ -248,9 +251,6 @@ export default class GamePlay extends Component {
                 if(component.state.round<=0){
                     clearInterval(x);
                 }
-
-
-
 
                 if (component.state.time !== 0) {
                     db.collection("rooms").doc(window.location.search.substring(6)).set({
@@ -342,4 +342,5 @@ export default class GamePlay extends Component {
 
 
     }
+
 }

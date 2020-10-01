@@ -3,7 +3,7 @@ import "../css/shape.css";
 
 
 import fire from "../FireBase";
-import { firestore } from 'firebase';
+
 
 
 export default class Shape extends Component {

@@ -10,12 +10,18 @@
 .room-component {
     width: 40%;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     height: 100px;
     cursor: pointer;
     border: 1px solid green;
     transition: .2s all;
+    flex-direction: column;
+}
+
+.room-component-users {
+    display: flex;
+    justify-content: space-around;
 }
 
 .room-component:hover {
