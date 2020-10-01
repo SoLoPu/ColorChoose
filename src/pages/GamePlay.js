@@ -74,12 +74,12 @@ export default class GamePlay extends Component {
                 <div className="score">
 
                     <div className="player">
-                        <h1>Player 1</h1>
-                        <p>{this.state.player2}</p>
+                        <h3>Player 1</h3>
+                        <p>{this.state.player2} win</p>
                     </div>
                     <div className="player">
-                        <h1>Player 2</h1>
-                        <p>{this.state.player2}</p>
+                        <h3>Player 2</h3>
+                        <p>{this.state.player2} win</p>
                     </div>  
                     
                 </div>

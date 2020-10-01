@@ -8,19 +8,19 @@
 }
 
 .room-component {
-    border: 1px solid black;
     width: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100px;
     cursor: pointer;
+    border: 1px solid green;
     transition: .2s all;
 }
 
 .room-component:hover {
-    border-radius: 10px;
-    background-color: red;
+    border-radius: 30px;
+    background-image: linear-gradient(#ff0000, #ffae00);
     color: white;
-    transition: .2s all;
+    transition: .3s all;
 }
