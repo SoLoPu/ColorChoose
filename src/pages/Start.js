@@ -6,7 +6,7 @@ export default class Start extends Component {
     render(){
         return(
             <div className="body">
-                <h2 className="game-name">Color Remember</h2>
+                <h1 className="game-name">Color Remember</h1>
                 <div class="form__group field">
                     <input type="input" class="form__field" placeholder="Name" name="name" id='name' required />
                     <label for="name" class="form__label">Username</label>

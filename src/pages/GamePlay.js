@@ -24,18 +24,19 @@ export default class GamePlay extends Component {
     render() {
         return (
             <div className="about-wrapper">
-                <h1>RoomName {this.state.round}</h1>
-                <p className="count-down">{this.state.time}</p>
+                <h1 className="room-name">RoomName {this.state.round}</h1>
+                <h2 className="count-down">{this.state.time}s</h2>
+                <h5 className="explain">Try to find this color</h5>
                 <div className="result"></div>
                 <div className="score">
 
                     <div className="player">
-                        <h1>Player 1</h1>
-                        <p>{this.state.player2}</p>
+                        <h3>Player 1</h3>
+                        <p>{this.state.player2} win</p>
                     </div>
                     <div className="player">
-                        <h1>Player 2</h1>
-                        <p>{this.state.player2}</p>
+                        <h3>Player 2</h3>
+                        <p>{this.state.player2} win</p>
                     </div>  
                     
                 </div>

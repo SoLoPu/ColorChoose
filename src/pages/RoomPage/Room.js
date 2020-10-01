@@ -5,13 +5,13 @@ import 'firebase/firestore';
 
 export default function Room(props) {
     const dataListRoom = [
-        { name: "room1" },
-        { name: "room2" },
-        { name: "room3" },
-        { name: "room4" },
-        { name: "room5" },
-        { name: "room6" },
-        { name: "room7" },
+        { name: "Ha Noi" },
+        { name: "Hai Phong" },
+        { name: "Da Nang" },
+        { name: "Quy Nhon" },
+        { name: "Nha Trang" },
+        { name: "Phan Thiet" },
+        { name: "Ho Chi Minh" },
     ]
     const [listRoom, setListRoom] = useState([])
     useEffect(() => {
