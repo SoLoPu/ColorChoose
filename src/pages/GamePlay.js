@@ -4,10 +4,16 @@ import Shape from "../component/Shape";
 import dataColor from "../data/dataColor"
 import dataShape from "../data/dataShape"
 
-import fire from "../FireBase";
-import { firestore } from 'firebase';
+const randomColor = (n) => {
+    let colorArr = [];
+    let randIdx = Math.floor(Math.random()*(dataColor.length - n))
 
-
+    for(let i = randIdx; i < randIdx+n; i++){
+        let shape = Math.floor(Math.random()*dataShape)
+        colorArr.push({color:dataColor[i], shape:"square"})
+    }
+    return colorArr;
+}
 
 
 export default class GamePlay extends Component {
@@ -27,8 +33,9 @@ export default class GamePlay extends Component {
                 "yellow",
                 "black"
             ],
-            question: "",
-            roomName: ""
+            numOfShape: 4,
+            shapes: [
+            ]
         }
         this.countDown = this.countDown.bind(this);
         this.onClickStart = this.onClickStart.bind(this);
@@ -43,7 +50,7 @@ export default class GamePlay extends Component {
                 <h1>{this.state.roomName}</h1>
                 <p className="count-down">{this.state.time}</p>
                 {this.state.active &&
-                <div className="result" style={{backgroundColor:this.state.question}}></div>}
+                <div className="result" style={{backgroundColor:this.state.colors[Math.floor(Math.random()*this.state.numOfShape)].color}}></div>}
                 <div className="score">
 
                     <div className="player">
@@ -172,30 +179,22 @@ export default class GamePlay extends Component {
                     console.error("Error writing document: ", error);
                 });
         
+        component.setState({
+            time: component.state.time - 1
+        })
 
-            }
-            
+        // If the count down is finished, write some text
+        if (component.state.time <= 0) {
+            component.setState({
+                time: 0
+           });
+           let arrWhite = component.state.colors;
+           
+           component.setState({
+                active:true
+           })
 
-            // If the count down is finished, write some text
-            if (component.state.time <= 0) {
-
-                db.collection("rooms").doc("3dGkXKxwc7WYy5rA1b1s").set({
-                    active: true,
-                    time: 0   
-                }, { merge: true })
-            }
-            
-            if(countDownTime <= 0){
-                db.collection("rooms").doc("3dGkXKxwc7WYy5rA1b1s").set({
-                    round: component.state.round - 1
-                }, { merge: true })
-                component.onClickStart();
-                
-                clearInterval(x);
-            }
-            }, 1000);
-        }
-        else{
+            clearInterval(x);
             
         }
         

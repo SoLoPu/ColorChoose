@@ -3,10 +3,10 @@ import fire from "../../FireBase"
 import {
     useHistory
 } from "react-router-dom";
+import { queries } from '@testing-library/react';
 
 
 export default function RoomComponent(props) {
-    console.log(props)
     const history = useHistory();
     const moveToRoom = () => {
         // history.push("/gameplay");
@@ -16,12 +16,16 @@ export default function RoomComponent(props) {
         db.collection("rooms").doc(props.room.idRoom.toString()).get().then(function (doc) {
             console.log(doc.data())
             const dataRoom = doc.data()
-            const user = localStorage.getItem("user")
-            console.log(JSON.parse(user))
+            const user = JSON.parse(localStorage.getItem("user"))
             db.collection('rooms').doc(props.room.idRoom.toString()).update({
-                users: [...dataRoom.users]
+                users: [{
+                    username: user.username,
+                    id: user.id,
+                    point: 0,
+                    isReady: true,
+                }]
             })
-            history.push("/gameplay");
+            history.push("/gameplay" + `?room=${props.room.idRoom}`);
         })
     }
     return (
