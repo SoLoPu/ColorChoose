@@ -18,7 +18,7 @@ function UserInfo(props) {
         db.collection("rooms").doc(window.location.search.substring(6)).onSnapshot(function (doc) {
             // setRoomData(doc.data())
             setRoomData(doc.data())
-            if (doc.data().users.length > 1) {
+            if (doc.data()?.users.length > 1) {
                 for (let i in doc.data().users) {
                     if (!doc.data().users[i].isReady) {
                         return
@@ -295,6 +295,17 @@ export default class GamePlay extends Component {
 
     }
 
+     saveRank(data, id) {
+        const db = fire.firestore()
+        db.collection("ranking").doc(id.toString()).set(data)
+        .then(function() {
+            console.log("Successfully written!");
+        })
+        .catch(function(error) {
+            console.error("Error writing document: ", error);
+        });
+    }
+
     componentDidMount() {
         const component = this;
         const db = firestore();
@@ -329,6 +340,7 @@ export default class GamePlay extends Component {
                 }
                 if (doc.data().round === 0) {
                     if (doc.data().users[0].point > doc.data().users[1].point) {
+                        
                         alert("Player1 win")
                     }
                     if (doc.data().users[0].point < doc.data().users[1].point) {
@@ -337,6 +349,14 @@ export default class GamePlay extends Component {
                     if (doc.data().users[0].point === doc.data().users[1].point) {
                         alert("Tie")
                     }
+                    doc.data().users.forEach(element => {
+                        component.saveRank({
+                            id: element.id,
+                            point: element.point,
+                            username: element.username,
+                            createTime: new Date().getTime()
+                        }, element.id)
+                    });
                 }
             });
 
