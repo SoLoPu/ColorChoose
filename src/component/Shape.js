@@ -3,7 +3,7 @@ import "../css/shape.css";
 
 
 import fire from "../FireBase";
-import { firestore } from 'firebase';
+
 
 
 export default class Shape extends Component {
@@ -41,7 +41,7 @@ export default class Shape extends Component {
         const db = fire.firestore();
         let player1Score;
         let player2Score;
-        db.collection("rooms").doc("3dGkXKxwc7WYy5rA1b1s").get().then(function(doc) {
+        db.collection("rooms").doc(window.location.search.substring(6)).get().then(function(doc) {
             if (doc.exists) {
 
                     player1Score = doc.data().users[0]
@@ -55,7 +55,7 @@ export default class Shape extends Component {
                             else{
                                 player2Score.point+=10;
                             }
-                            db.collection("rooms").doc("3dGkXKxwc7WYy5rA1b1s").set({
+                            db.collection("rooms").doc(window.location.search.substring(6)).set({
                                 users: [
                                     player1Score,
                                     player2Score
