@@ -46,7 +46,7 @@ export default class GamePlay extends Component {
     render() {
         return (
             <div className="about-wrapper">
-                <h1>RoomName {this.state.round}</h1>
+                <h1 className="room-name">RoomName {this.state.round}</h1>
                 <p className="count-down">{this.state.time}</p>
                 {this.state.active &&
                 <div className="result" style={{backgroundColor:this.state.colors[Math.floor(Math.random()*4)].color}}></div>}

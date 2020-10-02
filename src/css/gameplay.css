@@ -8,6 +8,13 @@
     margin: 10px;
 }
 
+.room-name {
+    background: -webkit-linear-gradient(#ff0000, #ffae00);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .about-wrapper {
     display: flex;
     flex-direction: column;
